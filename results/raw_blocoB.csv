@@ -1,0 +1,21 @@
+id,rep,modo,cenario,http_version,connect_ms,appconnect_ms,ttfb_ms
+E04,1,HTTP/2 (TCP+TLS),WAN_0,2,49.177,108.451,158.273
+E05,1,HTTP/3 Cold (1-RTT),WAN_0,3,68.279,68.279,128.212
+E06_primeira,1,HTTP/3 (1a req. da sessao),WAN_0,3,67.149,67.149,119.118
+E06,1,HTTP/3 Warm (conexao reutilizada),WAN_0,3,0.000,0.000,49.368
+E04,2,HTTP/2 (TCP+TLS),WAN_0,2,49.017,100.536,150.421
+E05,2,HTTP/3 Cold (1-RTT),WAN_0,3,68.424,68.424,120.664
+E06_primeira,2,HTTP/3 (1a req. da sessao),WAN_0,3,67.075,67.075,118.951
+E06,2,HTTP/3 Warm (conexao reutilizada),WAN_0,3,0.000,0.000,49.543
+E04,3,HTTP/2 (TCP+TLS),WAN_0,2,50.019,100.596,152.152
+E05,3,HTTP/3 Cold (1-RTT),WAN_0,3,67.843,67.843,121.493
+E06_primeira,3,HTTP/3 (1a req. da sessao),WAN_0,3,67.778,67.778,120.045
+E06,3,HTTP/3 Warm (conexao reutilizada),WAN_0,3,0.000,0.000,67.684
+E04,4,HTTP/2 (TCP+TLS),WAN_0,2,48.973,99.629,149.799
+E05,4,HTTP/3 Cold (1-RTT),WAN_0,3,66.972,66.972,119.757
+E06_primeira,4,HTTP/3 (1a req. da sessao),WAN_0,3,66.630,66.630,118.372
+E06,4,HTTP/3 Warm (conexao reutilizada),WAN_0,3,0.000,0.000,50.283
+E04,5,HTTP/2 (TCP+TLS),WAN_0,2,49.044,100.803,150.794
+E05,5,HTTP/3 Cold (1-RTT),WAN_0,3,85.216,85.216,139.136
+E06_primeira,5,HTTP/3 (1a req. da sessao),WAN_0,3,69.055,69.055,120.431
+E06,5,HTTP/3 Warm (conexao reutilizada),WAN_0,3,0.000,0.000,48.514

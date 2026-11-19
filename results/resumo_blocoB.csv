@@ -1,0 +1,4 @@
+id,modo,n,ttfb_medio_ms,ttfb_dp_ms,min_ms,max_ms
+E04,HTTP/2 (TCP+TLS),5,152.288,3.455,149.799,158.273
+E05,HTTP/3 Cold (1-RTT),5,125.852,8.141,119.757,139.136
+E06,HTTP/3 Warm (conexão reutilizada),5,53.078,8.189,48.514,67.684
