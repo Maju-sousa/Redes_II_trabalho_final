@@ -1,0 +1,43 @@
+# TP3 (N3) Redes de Computadores II - UFPI/CSHNB
+# cap_add NET_ADMIN e obrigatorio para injetar regras tc netem em eth0.
+services:
+  server-tcp:
+    image: networkstatic/iperf3
+    container_name: server_tcp_cc
+    cap_add:
+      - NET_ADMIN
+    command: -s
+    networks:
+      net_bench:
+        ipv4_address: 172.20.0.10
+
+  server-http3:
+    image: caddy:2.7-alpine
+    container_name: server_http3_quic
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./certs:/etc/caddy/certs:ro
+      - ./site:/usr/share/caddy:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      net_bench:
+        ipv4_address: 172.20.0.30
+
+  client-bench:
+    image: curlimages/curl:latest
+    container_name: client_bench
+    user: root              # necessario para instalar iperf3 e tc (apk) no cliente
+    cap_add:
+      - NET_ADMIN
+    entrypoint: ["sleep", "infinity"]
+    networks:
+      net_bench:
+        ipv4_address: 172.20.0.50
+
+networks:
+  net_bench:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

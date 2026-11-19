@@ -1,0 +1,13 @@
+{
+	admin off
+	auto_https disable_redirects
+	servers {
+		protocols h1 h2 h3
+	}
+}
+
+https://172.20.0.30 {
+	tls /etc/caddy/certs/server.crt /etc/caddy/certs/server.key
+	root * /usr/share/caddy
+	file_server
+}
