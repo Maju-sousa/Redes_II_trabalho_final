@@ -1,9 +1,9 @@
 == lan ==
 5 packets transmitted, 5 packets received, 0% packet loss
-round-trip min/avg/max = 2.070/2.607/3.973 ms
+round-trip min/avg/max = 1.318/2.138/4.962 ms
 == wan_loss ==
 5 packets transmitted, 5 packets received, 0% packet loss
-round-trip min/avg/max = 52.850/53.083/53.227 ms
+round-trip min/avg/max = 50.331/51.026/52.763 ms
 == wan_noloss ==
 5 packets transmitted, 5 packets received, 0% packet loss
-round-trip min/avg/max = 52.495/53.439/54.598 ms
+round-trip min/avg/max = 50.665/51.017/52.131 ms

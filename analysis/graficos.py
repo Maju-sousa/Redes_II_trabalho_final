@@ -20,7 +20,7 @@ def grafico_vazao(sA):
     ax.bar(range(len(ids)), means, yerr=sds, capsize=6,
            color=["#4C72B0", "#C44E52", "#55A868"][:len(ids)], edgecolor="black", linewidth=0.6)
     for k, (m, s) in enumerate(zip(means, sds)):
-        ax.text(k, m + s, f"{m:.1f}", ha="center", va="bottom", fontsize=9)
+        ax.annotate(f"{m:.1f}", (k, m + s), xytext=(0, 4), textcoords="offset points", ha="center", fontsize=9)
     ax.set_xticks(range(len(ids)))
     ax.set_xticklabels([f"{i}\n{ROT_A[i][0]}\n{ROT_A[i][1]}" for i in ids], fontsize=8)
     pos = [m for m in means if m > 0]
@@ -34,7 +34,7 @@ def grafico_vazao(sA):
     _salvar(fig, "grafico1_vazao")
 
 
-def grafico_ttfb(sB):
+def grafico_ttfb(sB, rtt_ms=50.0):
     ids = list(sB)
     means = [sB[i][0] for i in ids]
     sds = [sB[i][1] for i in ids]
@@ -42,14 +42,15 @@ def grafico_ttfb(sB):
     ax.bar(range(len(ids)), means, yerr=sds, capsize=6,
            color=["#C44E52", "#4C72B0", "#55A868", "#8172B2"][:len(ids)], edgecolor="black", linewidth=0.6)
     for k, (m, s) in enumerate(zip(means, sds)):
-        ax.text(k, m + s, f"{m:.1f}", ha="center", va="bottom", fontsize=9)
-    for k in (1, 2, 3):   # referencias teoricas: k x RTT (RTT = 50 ms)
-        ax.axhline(50 * k, ls=":", lw=0.8, color="gray")
-        ax.text(len(ids) - 0.5, 50 * k, f" {k}×RTT", va="bottom", ha="right", fontsize=7, color="gray")
+        ax.annotate(f"{m:.1f}", (k, m + s), xytext=(0, 4), textcoords="offset points", ha="center", fontsize=9)
+    for k in (1, 2, 3):   # referencias teoricas: k x RTT medido (ping)
+        ax.axhline(rtt_ms * k, ls=":", lw=0.9, color="gray", label=f"{k}×RTT medido ({rtt_ms * k:.0f} ms)")
+    ax.set_ylim(0, max(m + s for m, s in zip(means, sds)) * 1.25)
+    ax.legend(loc="upper right", fontsize=7, frameon=True)
     ax.set_xticks(range(len(ids)))
     ax.set_xticklabels([f"{i}\n{ROT_B[i]}" for i in ids], fontsize=8)
     ax.set_ylabel("TTFB médio - time_starttransfer (ms)")
-    ax.set_xlabel("Modo de conexão (WAN, RTT 50 ms, 0% perda)")
+    ax.set_xlabel("Modo de conexão (WAN, RTT nominal 50 ms, 0% perda)")
     ax.set_title(f"Tempo até o primeiro byte, objeto de 1 KB (média ± DP, n = {sB[ids[0]][4]})", fontsize=10)
     ax.grid(axis="y", alpha=0.3)
     _salvar(fig, "grafico2_ttfb")

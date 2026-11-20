@@ -1,5 +1,6 @@
 """Leitura dos CSVs brutos e estatistica descritiva (media e desvio padrao amostral, n-1)."""
 import csv
+import re
 import statistics as st
 from collections import defaultdict
 
@@ -12,6 +13,17 @@ ROT_B = {"E04": "HTTP/2\n(TCP+TLS)", "E05": "HTTP/3 Cold\n(1-RTT)",
          "E06": "HTTP/3 Warm\n(conexão reutilizada)", "E06b": "HTTP/3 Retomada\n(ticket TLS, extra)"}
 MACRO = {"E01": "Eum", "E02": "Edois", "E03": "Etres", "E04": "Equatro",
          "E05": "Ecinco", "E06": "Eseis", "E06b": "Eseisb"}
+
+
+def rtt_medio(cenario, padrao=50.0):
+    """RTT medio (ms) medido por ping em results/rtt_check.txt para o cenario dado (ex.: 'wan_noloss')."""
+    try:
+        with open(f"{RES}/rtt_check.txt", encoding="utf-8") as f:
+            txt = f.read()
+    except OSError:
+        return padrao
+    m = re.search(rf"== {cenario} ==.*?=\s*[\d.]+/([\d.]+)/", txt, re.S)
+    return float(m.group(1)) if m else padrao
 
 
 def ler_csv(caminho):

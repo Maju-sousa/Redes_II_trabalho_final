@@ -21,13 +21,14 @@ run_blocoB_rep() {    # <rep>
   record_b E06_primeira "$rep" "HTTP/3 (1a req. da sessao)" WAN_0 <<< "$(echo "$out" | sed -n 1p)"
   record_b E06 "$rep" "HTTP/3 Warm (conexao reutilizada)" WAN_0 <<< "$(echo "$out" | sed -n 2p)"
 
-  # E06b (extra): retomada real de sessao TLS/QUIC com ticket salvo em arquivo (curl >= 8.12).
+  # E06b (extra): retomada de sessao TLS/QUIC com ticket salvo em arquivo (curl >= 8.12).
+  # A variante (com/sem early data) foi escolhida uma vez em detectar_retomada().
   if [ "$HAVE_SESS" = 1 ]; then
-    docker exec "$CLI" rm -f /tmp/sess.txt
-    docker exec "$CLI" curl -k -s --http3-only -o /dev/null --ssl-sessions /tmp/sess.txt "$URL" >/dev/null 2>&1
-    out=$(docker exec "$CLI" curl -k -s --http3-only -o /dev/null --ssl-sessions /tmp/sess.txt --tls-earlydata -w "$FMT" "$URL" 2>/dev/null) \
-      || out=$(docker exec "$CLI" curl -k -s --http3-only -o /dev/null --ssl-sessions /tmp/sess.txt -w "$FMT" "$URL" 2>/dev/null) || out=""
-    [ -n "$out" ] && record_b E06b "$rep" "HTTP/3 Retomada (ticket TLS)" WAN_0 <<< "$out"
+    docker exec "$CLI" rm -f "$SESS_FILE"
+    docker exec "$CLI" curl -k -s --http3-only -o /dev/null --ssl-sessions "$SESS_FILE" "$URL" >/dev/null 2>&1   # obtem o ticket
+    out=$(docker exec "$CLI" curl -k -s --http3-only -o /dev/null $SESS_FLAGS -w "$FMT" "$URL" 2>/dev/null) || out=""
+    if [ -n "$out" ]; then record_b E06b "$rep" "$SESS_ROTULO" WAN_0 <<< "$out"
+    else log "  AVISO: E06b rep$rep falhou"; fi
   fi
   log "  Bloco B rep$rep concluida"
 }

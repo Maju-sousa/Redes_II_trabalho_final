@@ -19,3 +19,8 @@ HAVE_SESS=0
 
 if docker compose version >/dev/null 2>&1; then DC="docker compose"; else DC="docker-compose"; fi
 log() { echo "[$(date +%H:%M:%S)] $*"; }
+
+# Retomada de sessao (E06b, extra): definida em detectar_retomada() conforme o curl do cliente
+SESS_FILE=/tmp/sess.txt
+SESS_FLAGS=""
+SESS_ROTULO=""

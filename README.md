@@ -32,3 +32,14 @@ report/              saída do analyze.py (tabelas.tex, numeros.tex), criada na 
 ## Decisão de projeto: RTT
 O `netem` atua só na saída da interface. Aplicado só nos servidores, o RTT seria metade do desejado.
 Por isso a regra é espelhada no cliente (`MIRROR_CLIENT=1`); o RTT efetivo fica em `results/rtt_check.txt`.
+
+## Desvios em relação ao enunciado (e por quê)
+| Item | Enunciado | Este projeto | Motivo |
+|---|---|---|---|
+| Imagem do cliente | `curlimages/curl:latest` | `alpine/curl-http3:latest` (troca: `CLIENT_IMAGE=...`) | o curl da imagem original não tinha HTTP/3 |
+| `Caddyfile` | só `certs` e `site` montados | `Caddyfile` montado também | o Caddy precisa dele para servir HTTPS/HTTP/3 com o certificado de teste |
+| `netem` | só nos servidores | também no cliente (`MIRROR_CLIENT=1`) | `netem` age só na saída; sem isso o RTT seria metade e os dados do cliente não sofreriam a perda |
+| E06 | "Warm / Resumption" | E06 = duas requisições na mesma chamada do `curl` (reuso de conexão); E06b = retomada por ticket, se o `curl` suportar `--ssl-sessions` | o enunciado permite "requisições sequenciais na mesma chamada do curl"; o TTFB esperado é ≈ 1 RTT, igual ao do 0-RTT |
+| `version: '3.8'` | presente | mantido | obsoleto, só gera aviso |
+
+`results/ambiente.txt` registra o commit do código, as versões e se o E06b foi habilitado.
