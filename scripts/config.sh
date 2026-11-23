@@ -1,8 +1,8 @@
-# Configuracao compartilhada (carregado por run_n3.sh)
-REPS="${REPS:-5}"                     # repeticoes por teste
-DURATION="${DURATION:-15}"            # duracao do fluxo iperf3 (s)
-MIRROR_CLIENT="${MIRROR_CLIENT:-1}"   # 1 = replica a regra netem no cliente (RTT total correto)
-KEEP_UP="${KEEP_UP:-0}"               # 1 = nao derruba os conteineres ao final
+# Configuracao compartilhada 
+REPS="${REPS:-5}"                     
+DURATION="${DURATION:-15}"           
+MIRROR_CLIENT="${MIRROR_CLIENT:-1}"   
+KEEP_UP="${KEEP_UP:-0}"               
 
 SRV_TCP=server_tcp_cc
 SRV_H3=server_http3_quic
@@ -14,13 +14,14 @@ URL="https://${IP_H3}/obj1k.bin"
 OUT=results
 A_CSV="$OUT/raw_blocoA.csv"
 B_CSV="$OUT/raw_blocoB.csv"
+FAIL_LOG="$OUT/falhas.log"            
+
 FMT='%{http_version} %{time_connect} %{time_appconnect} %{time_starttransfer}\n'
-HAVE_SESS=0
+FMT_ED='%{http_version} %{time_connect} %{time_appconnect} %{time_starttransfer} %{tls_earlydata}\n'
 
 if docker compose version >/dev/null 2>&1; then DC="docker compose"; else DC="docker-compose"; fi
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 
-# Retomada de sessao (E06b, extra): definida em detectar_retomada() conforme o curl do cliente
 SESS_FILE=/tmp/sess.txt
-SESS_FLAGS=""
-SESS_ROTULO=""
+HAVE_TICKET=0     # 1 = curl grava/reusa ticket TLS (--ssl-sessions)  -> mede E06b
+HAVE_0RTT=0       # 1 = curl enviou early data (tls_earlydata > 0)    -> mede E06c (0-RTT de verdade)

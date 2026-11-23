@@ -1,4 +1,3 @@
-
 version: '3.8'   # obsoleto no Compose v2 (gera so um aviso); mantido por fidelidade ao enunciado
 services:
   server-tcp:
@@ -25,13 +24,16 @@ services:
         ipv4_address: 172.20.0.30
 
   client-bench:
-    # O enunciado usa curlimages/curl:latest, cujo curl pode nao ter HTTP/3. Esta imagem tem (quiche).
-    # Para testar outra: CLIENT_IMAGE=<imagem> ./run_n3.sh
-    image: ${CLIENT_IMAGE:-alpine/curl-http3:latest}
+    # O enunciado usa curlimages/curl:latest, cujo curl pode nao ter HTTP/3. Esta imagem e construida em ./client:
+    # curl + OpenSSL 3.5 + ngtcp2 + nghttp3 (HTTP/3 com retomada de sessao e early data/0-RTT), mais iperf3 e tc.
+    build: ./client
+    image: tp3-client
     container_name: client_bench
-    user: root              # necessario para instalar iperf3 e tc (apk) no cliente
+    user: root              # necessario para instalar pacotes (apk) no cliente, se faltar algo
     cap_add:
       - NET_ADMIN
+    sysctls:
+      net.ipv4.tcp_no_metrics_save: 1   # o TCP nao reaproveita ssthresh/RTT da repeticao anterior (amostras independentes)
     entrypoint: ["sleep", "infinity"]
     networks:
       net_bench:
