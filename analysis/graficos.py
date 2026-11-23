@@ -45,7 +45,7 @@ def grafico_ttfb(sB, rtt_ms=50.0):
     for k, (m, s) in enumerate(zip(means, sds)):
         ax.annotate(fx(m), (k, m + s), xytext=(0, 4), textcoords="offset points", ha="center", fontsize=9)
     for k in (1, 2, 3):   # referencias teoricas: k x RTT medido (ping)
-        ax.axhline(rtt_ms * k, ls=":", lw=0.9, color="gray", label=f"{k}×RTT medido ({rtt_ms * k:.0f} ms)")
+        ax.axhline(rtt_ms * k, ls=":", lw=0.9, color="gray", label=f"{k}×RTT nominal ({rtt_ms * k:.0f} ms)")
     ax.set_ylim(0, max(m + s for m, s in zip(means, sds)) * 1.25)
     ax.legend(loc="upper right", fontsize=7, frameon=True)
     ax.set_xticks(range(len(ids)))

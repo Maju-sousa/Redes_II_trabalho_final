@@ -1,0 +1,270 @@
+== E01_rep1_antes 23:02:30 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 980 bytes 10 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep1_depois 23:02:47 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 15387010185 bytes 10169143 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 10436239 bytes 158090 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep2_antes 23:02:50 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 15387010185 bytes 10169143 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 10436239 bytes 158090 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep2_depois 23:03:03 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 31206281302 bytes 20624012 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 21331016 bytes 323133 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep3_antes 23:03:06 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 31206281302 bytes 20624012 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 21331016 bytes 323133 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep3_depois 23:03:22 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 47124695877 bytes 31144255 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 32259941 bytes 488705 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep4_antes 23:03:22 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 47124695877 bytes 31144255 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 32259941 bytes 488705 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep4_depois 23:03:38 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 63754116484 bytes 42134264 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 43668702 bytes 661534 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep5_antes 23:03:40 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 63754116484 bytes 42134264 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 43668702 bytes 661534 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E01_rep5_depois 23:03:54 ==
+-- client_bench
+qdisc netem 8016: root refcnt 9 limit 1000 delay 500us seed 2345153283148411114
+ Sent 80368125186 bytes 53114149 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8014: root refcnt 9 limit 1000 delay 500us seed 11930355375817135480
+ Sent 55211895 bytes 836408 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep1_antes 23:04:10 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1064 bytes 12 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep1_depois 23:04:24 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 6264580 bytes 4171 pkt (dropped 42, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 39179 bytes 563 pkt (dropped 10, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep1_antes 23:04:26 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 6264580 bytes 4171 pkt (dropped 42, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 39179 bytes 563 pkt (dropped 10, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep1_depois 23:04:43 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 607348801 bytes 401251 pkt (dropped 228, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 574951 bytes 8068 pkt (dropped 161, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep2_antes 23:04:45 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 607348801 bytes 401251 pkt (dropped 228, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 574951 bytes 8068 pkt (dropped 161, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep2_depois 23:04:59 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 612011931 bytes 404354 pkt (dropped 267, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 623296 bytes 8762 pkt (dropped 172, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep2_antes 23:05:02 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 612011931 bytes 404354 pkt (dropped 267, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 623296 bytes 8762 pkt (dropped 172, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep2_depois 23:05:16 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1124149567 bytes 742677 pkt (dropped 506, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1218984 bytes 16935 pkt (dropped 351, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep3_antes 23:05:18 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1124149567 bytes 742677 pkt (dropped 506, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1218984 bytes 16935 pkt (dropped 351, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep3_depois 23:05:34 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1129455416 bytes 746205 pkt (dropped 549, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1275397 bytes 17728 pkt (dropped 371, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep3_antes 23:05:37 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1129455416 bytes 746205 pkt (dropped 549, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1275397 bytes 17728 pkt (dropped 371, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep3_depois 23:05:51 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1764174410 bytes 1165511 pkt (dropped 736, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1829500 bytes 25503 pkt (dropped 528, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep4_antes 23:05:53 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1764174410 bytes 1165511 pkt (dropped 736, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1829500 bytes 25503 pkt (dropped 528, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep4_depois 23:06:09 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1770194695 bytes 1169510 pkt (dropped 783, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1881438 bytes 26244 pkt (dropped 543, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep4_antes 23:06:09 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 1770194695 bytes 1169510 pkt (dropped 783, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 1881438 bytes 26244 pkt (dropped 543, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep4_depois 23:06:26 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 2346949190 bytes 1550523 pkt (dropped 1000, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 2397276 bytes 33362 pkt (dropped 701, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep5_antes 23:06:28 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 2346949190 bytes 1550523 pkt (dropped 1000, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 2397276 bytes 33362 pkt (dropped 701, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E02_rep5_depois 23:06:42 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 2352518372 bytes 1554225 pkt (dropped 1037, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 2436568 bytes 33927 pkt (dropped 712, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep5_antes 23:06:44 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 2352518372 bytes 1554225 pkt (dropped 1037, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 2436568 bytes 33927 pkt (dropped 712, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+== E03_rep5_depois 23:07:01 ==
+-- client_bench
+qdisc netem 8019: root refcnt 9 limit 1000 delay 25ms loss 2% seed 13426453168935220756
+ Sent 2988731068 bytes 1974507 pkt (dropped 1234, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+-- server_tcp_cc
+qdisc netem 8017: root refcnt 9 limit 1000 delay 25ms loss 2% seed 641075079903069430
+ Sent 2998847 bytes 41795 pkt (dropped 872, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0

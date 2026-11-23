@@ -13,7 +13,7 @@ def main():
     pct = retrans_pct()
     salvar_resumos(sA, sB)
     grafico_vazao(sA)
-    grafico_ttfb(sB, rtt_medio("wan_noloss"))
+    grafico_ttfb(sB, 50.0)
     escrever_tabelas(sA, sB, pct)
     escrever_numeros(sA, sB)
     print("Bloco A:", {i: (round(v[0], 2), round(v[1], 2), v[2], f"{pct.get(i, 0):.2f}%") for i, v in sA.items()})

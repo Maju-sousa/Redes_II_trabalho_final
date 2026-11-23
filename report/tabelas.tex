@@ -1,10 +1,10 @@
 \begin{table}[t]\centering\small
-\caption{Bloco A: vazão (média $\pm$ desvio padrão) e retransmissões TCP.}\label{tab:blocoA}
-\begin{tabular}{llrrr}\toprule
-ID & Configuração & Vazão (Mbps) & DP & Retrans. \\ \midrule
-E01 & TCP CUBIC, LAN & 8079,52 & 931,07 & 680 \\
-E02 & TCP CUBIC, WAN & 3,20 & 0,52 & 403 \\
-E03 & TCP BBR, WAN & 308,26 & 14,07 & 39496 \\
+\caption{Bloco A: vazão (média $\pm$ desvio padrão), retransmissões TCP (total das repetições) e taxa de retransmissão por segmento enviado.}\label{tab:blocoA}
+\begin{tabular}{llrrrr}\toprule
+ID & Configuração & Vazão (Mbps) & DP & Retrans. & Retrans. (\%) \\ \midrule
+E01 & TCP CUBIC, LAN & 8195,66 & 275,14 & 363 & 0,00 \\
+E02 & TCP CUBIC, WAN & 2,77 & 0,32 & 390 & 1,91 \\
+E03 & TCP BBR, WAN & 299,76 & 25,76 & 39928 & 2,04 \\
 \bottomrule\end{tabular}
 \end{table}
 
@@ -12,8 +12,9 @@ E03 & TCP BBR, WAN & 308,26 & 14,07 & 39496 \\
 \caption{Bloco B: TTFB em ms (RTT = 50 ms, 0\% de perda).}\label{tab:blocoB}
 \begin{tabular}{llrrrr}\toprule
 ID & Modo & Média & DP & Mín. & Máx. \\ \midrule
-E04 & HTTP/2 (TCP+TLS) & 156,1 & 1,4 & 154,6 & 158,2 \\
-E05 & HTTP/3 Cold (1-RTT) & 122,5 & 6,2 & 116,5 & 132,1 \\
-E06 & HTTP/3 Warm (conexão reutilizada) & 51,4 & 0,2 & 51,2 & 51,6 \\
+E04 & HTTP/2 (TCP+TLS) & 153,9 & 14,9 & 146,8 & 180,5 \\
+E05 & HTTP/3 Cold (1-RTT) & 103,3 & 1,2 & 101,5 & 104,7 \\
+E06a & HTTP/3 reuso de conexão & 50,1 & 0,6 & 49,5 & 50,7 \\
+E06b & HTTP/3 retomada (ticket TLS) & 105,4 & 3,7 & 102,9 & 111,5 \\
 \bottomrule\end{tabular}
 \end{table}

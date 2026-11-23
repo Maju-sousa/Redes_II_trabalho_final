@@ -1,4 +1,4 @@
-id,algoritmo,cenario,n,vazao_media_mbps,vazao_dp_mbps,retransmissoes_total
-E01,TCP CUBIC,"LAN (RTT 1 ms, 0% perda)",5,8079.524,931.073,680
-E02,TCP CUBIC,"WAN (RTT 50 ms, 2% perda)",5,3.204,0.521,403
-E03,TCP BBR,"WAN (RTT 50 ms, 2% perda)",5,308.258,14.075,39496
+id,algoritmo,cenario,n,vazao_media_mbps,vazao_dp_mbps,retransmissoes_total,retransmissoes_pct_segmentos
+E01,TCP CUBIC,"LAN (RTT 1 ms, 0% perda)",5,8195.656,275.141,363,0.001
+E02,TCP CUBIC,"WAN (RTT 50 ms, 2% perda)",5,2.772,0.324,390,1.915
+E03,TCP BBR,"WAN (RTT 50 ms, 2% perda)",5,299.761,25.763,39928,2.042
