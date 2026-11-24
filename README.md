@@ -14,7 +14,7 @@ Confira: `docker run --rm --entrypoint curl tp3-client -V | grep -E "HTTP3|Early
 REPS=1 DURATION=5 ./run_n3.sh   # teste rápido de ambiente
 ./run_n3.sh                     # execução completa (testes x 5 repetições)
 ```
-Variáveis: `REPS` (5), `DURATION` (15 s), `MIRROR_CLIENT` (1), `KEEP_UP` (0), `PERMITIR_SEM_0RTT` (0).
+Variáveis: `REPS` (5), `DURATION` (15 s), `MIRROR_CLIENT` (1), `KEEP_UP` (0), `PERMITIR_SEM_0RTT` (0), `PULAR_0RTT` (0: com 1, o E06c não é medido).
 O script **valida** a execução (`analysis/validar.py`) antes de gerar gráficos e tabelas e termina com código 1 se algo estiver incompleto ou inválido (repetição faltando, medição inválida, RTT fora da faixa, 0-RTT não comprovado).
 Ao final: dados brutos em `results/`, gráficos em `figures/`, tabelas e macros LaTeX em `report/`.
 
@@ -22,7 +22,7 @@ Ao final: dados brutos em `results/`, gráficos em `figures/`, tabelas e macros 
 ```
 docker-compose.yml   3 contêineres (iperf3 .10, Caddy HTTP/3 .30, cliente .50), NET_ADMIN
 client/Dockerfile    cliente: curl (OpenSSL 3.5 + ngtcp2 + nghttp3), iperf3, tc
-Caddyfile            HTTP/1.1, HTTP/2 e HTTP/3 com certificado autoassinado (0-RTT é habilitado por padrão no Caddy)
+Caddyfile            HTTP/1.1, HTTP/2 e HTTP/3 com certificado autoassinado
 run_n3.sh            orquestrador (netem, testes, validação, análise, limpeza)
 scripts/config.sh    variáveis e log
 scripts/ambiente.sh  certificado, objeto de 1 KB, subida dos contêineres, dependências, detecção de ticket/0-RTT
@@ -41,7 +41,7 @@ results/             raw_blocoA.csv, raw_blocoB.csv, json/ (iperf3), logs/ (curl
 | E06b | Conexão **nova** com ticket TLS salvo (`--ssl-sessions`), sem early data | log `-v` em `results/logs/` | ~2 RTT (a retomada não economiza RTT sem early data) |
 | E06c | Conexão **nova** com ticket + **0-RTT** (`--tls-earlydata`) | `earlydata_bytes > 0` (`%{tls_earlydata}`) | ~1 RTT |
 
-Reuso de conexão, retomada de sessão e envio de dados 0-RTT são mecanismos diferentes. O "Warm/Resumed" do enunciado corresponde ao E06c.
+Reuso de conexão, retomada de sessão e envio de dados 0-RTT são mecanismos diferentes. O "Warm/Resumed" do enunciado é coberto pelo E06a (reuso de conexão, permitido pela dica do E06) e pelo E06b (retomada por ticket); o E06c (0-RTT) é um extra.
 O ticket é obtido imediatamente antes de cada medição de E06b/E06c (tickets de 0-RTT são de uso único).
 
 ## Validação e reprodutibilidade
@@ -62,3 +62,11 @@ O ticket é obtido imediatamente antes de cada medição de E06b/E06c (tickets d
 | `version: '3.8'` | presente | mantido | obsoleto, só gera aviso |
 
 `results/ambiente.txt` registra o commit do código, as versões, o curl e se E06b/E06c foram habilitados.
+
+## Execução final e resultado do 0-RTT
+Execução usada nos resultados entregues (5 repetições, 15 s):
+```bash
+sudo modprobe tcp_bbr
+PERMITIR_SEM_0RTT=1 PULAR_0RTT=1 ./run_n3.sh
+```
+O 0-RTT (E06c) foi tentado, mas o `curl` (OpenSSL 3.5.0 + ngtcp2) relatou `tls_earlydata = 0` com o Caddy 2.7. A causa provável é o servidor não aceitar early data; não foi verificada. Por isso a execução final usa `PULAR_0RTT=1` e o "Warm/Resumed" é o E06a (reuso de conexão) e o E06b (retomada por ticket).
